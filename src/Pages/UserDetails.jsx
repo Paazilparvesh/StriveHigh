@@ -367,8 +367,8 @@ function UserDetails() {
         const totalScore =
           numericScores.length > 0
             ? Math.round(
-                numericScores.reduce((a, b) => a + b, 0) / numericScores.length
-              )
+              numericScores.reduce((a, b) => a + b, 0) / numericScores.length
+            )
             : 0;
 
         setOverallScore(totalScore);
@@ -408,7 +408,7 @@ function UserDetails() {
         onClick={() => navigate(-1)}
         className="mb-4 px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
       >
-      Back
+        Back
       </button>
       <h1 className="text-2xl font-bold mb-6">User Details</h1>
 
@@ -565,28 +565,30 @@ function UserDetails() {
       </div>
 
       {/* Category Wise Averages */}
-      <div className="mt-10 w-full bg-white rounded-2xl p-5 flex flex-wrap gap-6 shadow-md mx-auto">
-        {sistuvation?.category_wise_avgs?.map((item, index) => (
-          <div
-            key={index}
-            className="flex flex-col bg-white shadow-lg p-6 rounded-lg w-[48%]"
-          >
-            <h1 className="text-xl font-semibold">{item.category}</h1>
-            <div className="flex items-center gap-3 mt-5">
-              <div className="h-4 w-full bg-gray-200 rounded-full overflow-hidden">
-                <div
-                  className={`h-4 ${
-                    item.avg > 0 ? "bg-blue-500" : "bg-gray-200"
-                  } transition-all duration-500`}
-                  style={{ width: `${Math.round(item.avg)}%` }}
-                ></div>
+      <div className="flex flex-col mt-10 w-full bg-white mx-auto">
+        <h1 className="text-xl font-bold text-center">Based on Domain</h1>
+       <div className=" rounded-2xl p-5 flex flex-wrap gap-6 shadow-md mx-auto">
+          {sistuvation?.category_wise_avgs?.map((item, index) => (
+            <div
+              key={index}
+              className="flex flex-col bg-white shadow-lg p-6 rounded-lg w-[48%]"
+            >
+              <h1 className="text-xl font-semibold">{item.category}</h1>
+              <div className="flex items-center gap-3 mt-5">
+                <div className="h-4 w-full bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className={`h-4 ${item.avg > 0 ? "bg-blue-500" : "bg-gray-200"
+                      } transition-all duration-500`}
+                    style={{ width: `${Math.round(item.avg)}%` }}
+                  ></div>
+                </div>
+                <span className="text-sm font-medium text-gray-700">
+                  {item.avg > 0 ? `${Math.round(item.avg)}%` : "No Data"}
+                </span>
               </div>
-              <span className="text-sm font-medium text-gray-700">
-                {item.avg > 0 ? `${Math.round(item.avg)}%` : "No Data"}
-              </span>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
