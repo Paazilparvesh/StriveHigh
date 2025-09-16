@@ -14,7 +14,7 @@ function QuizCreate() {
     "Empathy",
     "Command Pressure",
   ]);
-  const [category,setCategory]=useState("")
+  const [category, setCategory] = useState("")
   const [quiz, setQuiz] = useState({
     question: "",
     option_a: "",
@@ -76,6 +76,7 @@ function QuizCreate() {
       const res = await axios.get(
         import.meta.env.VITE_AI_QUIZ
       );
+      console.log(res.data)
       setQuizzes(res.data);
     } catch (err) {
       console.error("Error fetching quizzes:", err);
@@ -93,9 +94,9 @@ function QuizCreate() {
       </h2>
       {
         !showForm && (
-          <Button onClick={()=>{setShowForm(true)}} 
-          label="Add Quiz"
-          className="w-full py-3 bg-blue-600 text-white rounded-md text-lg font-medium hover:bg-blue-700 transition" 
+          <Button onClick={() => { setShowForm(true) }}
+            label="Add Quiz"
+            className="w-full py-3 bg-blue-600 text-white rounded-md text-lg font-medium hover:bg-blue-700 transition"
           />
         )
       }
@@ -106,15 +107,15 @@ function QuizCreate() {
         >
           <div>
             <label className="font-medium">Choose Quiz Category</label>
-            <select className="p-2 border rounded-md w-full" value={category} onChange={(e)=>{setCategory(e.target.value)}}>
+            <select className="p-2 border rounded-md w-full" value={category} onChange={(e) => { setCategory(e.target.value) }}>
               <option>Choose Your Quiz Category</option>
               {
 
-                quizCategotry.map((item,index)=>{
-                  return(<>
-                  <option key={index}>
-                    {item}
-                  </option>
+                quizCategotry.map((item, index) => {
+                  return (<>
+                    <option key={index}>
+                      {item}
+                    </option>
                   </>)
 
                 })
@@ -168,6 +169,7 @@ function QuizCreate() {
                 className="border rounded-md p-4 bg-gray-50 shadow-sm"
               >
                 <strong>Question:</strong> {q.question}
+                < br /><strong>Category:</strong> {q.category}
                 <ul className="list-disc pl-5 mt-2 text-gray-700">
                   <li>A: {q.option_a}</li>
                   <li>B: {q.option_b}</li>

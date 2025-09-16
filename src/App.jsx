@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Content from './Pages/Content';
 import QuizCreate from './Pages/Quizcreation';
 import './App.css';
@@ -8,10 +8,9 @@ import Sidebar from './Components/Bars/Sidebar';
 import AI_Feed from './Pages/AI_Feed';
 import Termscondition from './Pages/TermsConditions';
 
-
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Navbar />
       <Sidebar open={true} />
 
@@ -24,7 +23,7 @@ function App() {
           <Route path='/info' element={<Termscondition />} />
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
