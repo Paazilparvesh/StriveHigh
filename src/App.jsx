@@ -7,6 +7,8 @@ import Navbar from './Components/Bars/Navbar';
 import Sidebar from './Components/Bars/Sidebar';
 import AI_Feed from './Pages/AI_Feed';
 import Termscondition from './Pages/TermsConditions';
+import Privacy from './Pages/PrivacyPolicy';
+import CourseContent from './Pages/Courses';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/aifeed" element={<AI_Feed />} />
           <Route path="/user/:email" element={<UserDetails />} />
           <Route path='/info' element={<Termscondition />} />
+          <Route path='/privacy' element={<Privacy/>} />
+          <Route path='/course' element={<CourseContent/>} />
         </Routes>
       </div>
     </BrowserRouter>
