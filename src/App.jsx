@@ -1,11 +1,14 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Content from './Pages/Content';
-import QuizCreate from './Pages/Quizcreation';
-import './App.css';
-import UserDetails from './Pages/UserDetails';
-import Navbar from './Components/Bars/Navbar';
-import Sidebar from './Components/Bars/Sidebar';
-import AI_Feed from './Pages/AI_Feed';
+
+import Navbar from '/src/Layout/Header.jsx';
+
+// Blog Pages
+import BlogPage1 from "/src/Pages/BlogPage/BlogPage1.jsx";
+import BlogPage2 from "/src/Pages/BlogPage/BlogPage2.jsx";
+import BlogPage3 from "/src/Pages/BlogPage/BlogPage3.jsx";
+
+import AdminPage from "/src/Pages/Admin/AdminPage.jsx";
+
 import Termscondition from './Pages/TermsConditions';
 import Privacy from './Pages/PrivacyPolicy';
 import CourseContent from './Pages/Courses';
@@ -14,19 +17,20 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Sidebar open={true} />
+      <Routes>
+        {/* Course Page */}
+        <Route path='/' element={<CourseContent />} />
+        {/* Blog Pages */}
+        <Route path="/blog/1" element={<BlogPage1 />} />
+        <Route path="/blog/2" element={<BlogPage2 />} />
+        <Route path="/blog/3" element={<BlogPage3 />} />
+        {/* Admin Page */}
+        <Route path="/admin" element={<AdminPage />} />
+        {/* Privacy Page */}
+        <Route path='/info' element={<Termscondition />} />
+        <Route path='/privacy' element={<Privacy />} />
 
-      <div className="main-content">
-        <Routes>
-          <Route path="/" element={<Content />} />
-          <Route path="/quizcreate" element={<QuizCreate />} />
-          <Route path="/aifeed" element={<AI_Feed />} />
-          <Route path="/user/:email" element={<UserDetails />} />
-          <Route path='/info' element={<Termscondition />} />
-          <Route path='/privacy' element={<Privacy/>} />
-          <Route path='/course' element={<CourseContent/>} />
-        </Routes>
-      </div>
+      </Routes>
     </BrowserRouter>
   );
 }
