@@ -8,7 +8,8 @@ const BlogPage = () => {
   return (
     <div className="p-4 md:p-8">
       <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
-        Blog Page - Vedios
+    Not Just Waves – Megan’s Story
+
       </h1>
 
       {/* One video per line */}

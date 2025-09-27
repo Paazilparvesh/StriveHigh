@@ -227,192 +227,322 @@
 
 
 
-const Content = {
-  name: "Loneliness Chatbot Journey",
-  description:
-    "A structured course designed to help seafarers understand and cope with loneliness at sea through stories, expert messages, reflections, and strategies.",
-  chapters: [
-    {
-      id: 1,
-      title: "Chapter 1 - Loneliness at Sea",
-      materials: [
-        {
-          material_name: "Introduction",
-          material: `
-Welcome to this course on Loneliness at Sea.  
+// import React, { useEffect, useRef, useState } from "react";
+// import { Menu, X, ChevronLeft, Unlock, Lock } from "lucide-react";
+// import Logo from "/src/assets/Logo/Ai logo-22.png";
 
-Loneliness is a common challenge faced by seafarers. In this chapter, we explore the emotional impact of isolation and begin by reflecting on personal experiences.
-          `,
-        },
-        {
-          material_name: "Poem & Reflection",
-          material: `
-Still Waters, Strong Heart  
+// // Import all your chapter images
+// import image1 from "/src/assets/CourseImages/Image1.jpeg";
+// import image2 from "/src/assets/CourseImages/Image2.jpeg";
+// import image3 from "/src/assets/CourseImages/Image3.jpeg";
+// import image4 from "/src/assets/CourseImages/Image4.jpeg";
+// import image5 from "/src/assets/CourseImages/Image5.jpeg";
 
-Alone you stand where oceans meet,  
-Yet echoes of love your heart still greet.  
-The stars above, your silent guide,  
-With every wave, we’re by your side.  
 
-Reflection Question:  
-- What emotions or memories does this poem bring to mind?
-          `,
-        },
-      ],
-      quiz: [
-        {
-          question: "What is one common emotional challenge for seafarers?",
-          options: [
-            "Physical injury",
-            "Loneliness",
-            "Lack of food",
-            "Navigation errors",
-          ],
-          answer: "Loneliness",
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Chapter 2 - Trainer & CEO Messages",
-      materials: [
-        {
-          material_name: "Trainer Message",
-          material: `
-In this section, you will hear from a trainer who shares insights on recognizing and addressing loneliness at sea.  
-Watch the trainer video and note key strategies mentioned.
-          `,
-        },
-        {
-          material_name: "CEO Message",
-          material: `
-Leadership plays an important role in supporting seafarers.  
-Here is a CEO message offering encouragement and organizational support.  
-Watch the CEO speech and reflect on how leadership values impact seafarers’ well-being.
-          `,
-        },
-      ],
-      quiz: [
-        {
-          question:
-            "Why is leadership support important in addressing loneliness at sea?",
-          options: [
-            "It reduces technical errors",
-            "It provides encouragement and validation",
-            "It prevents ship delays",
-            "It improves navigation speed",
-          ],
-          answer: "It provides encouragement and validation",
-        },
-      ],
-    },
-    {
-      id: 3,
-      title: "Chapter 3 - Participant Reflections",
-      materials: [
-        {
-          material_name: "Shared Reflections",
-          material: `
-Seafarers from across the world share their thoughts on loneliness:  
+// // Import video (you can extend to vedio2, vedio3 later if needed)
+// import vedio1 from "/src/assets/BlogVideo/vedio1.mp4";
 
-1. "During long voyages, every day feels the same."  
-2. "Even surrounded by people, I sometimes feel alone."  
-3. "Silence at sea can be harder than rough waters."  
-4. "I miss home when communication is limited."  
+// import Content from "/src/Pages/CourseContent.jsx";
 
-Reflection Question:  
-- Which of these reflections resonates most with your experience?
-          `,
-        },
-      ],
-      quiz: [
-        {
-          question: "Which of the following is a common reflection shared by seafarers?",
-          options: [
-            "They never feel lonely at sea",
-            "They miss home during long voyages",
-            "They enjoy complete silence always",
-            "They prefer no communication with family",
-          ],
-          answer: "They miss home during long voyages",
-        },
-      ],
-    },
-    {
-      id: 4,
-      title: "Chapter 4 - Coping Strategies",
-      materials: [
-        {
-          material_name: "Practical Strategies",
-          material: `
-Here are practical strategies to cope with loneliness:  
+// export default function CourseContent() {
+//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+//   const [isSidebarMinimized, setIsSidebarMinimized] = useState(false);
+//   const [chapterIndex, setChapterIndex] = useState(0);
+//   const [completedChapters, setCompletedChapters] = useState([]);
+//   const [unlockedChapters, setUnlockedChapters] = useState([0]);
+//   const [scrollCompleted, setScrollCompleted] = useState(false);
+//   const [showCertificate, setShowCertificate] = useState(false);
 
-1. Spend time with others at shared spaces.  
-2. Personalize your cabin with photos, quotes, or soft lighting.  
-3. Use music to stay connected with home.  
-4. Be supportive of colleagues, even in small ways.  
-5. Maintain a journal to express your feelings.  
-6. Build simple routines that provide structure.  
-7. Reach out for support before stress builds up.  
-8. Foster respect and inclusivity across cultures onboard.
-          `,
-        },
-      ],
-      quiz: [
-        {
-          question: "Which of these is NOT listed as a coping strategy?",
-          options: [
-            "Creating playlists",
-            "Writing in a journal",
-            "Ignoring colleagues",
-            "Personalizing your cabin",
-          ],
-          answer: "Ignoring colleagues",
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: "Chapter 5 - Moving Forward",
-      materials: [
-        {
-          material_name: "Summary & Next Steps",
-          material: `
-As we conclude this course:  
+//   const containerRef = useRef(null);
 
-- Loneliness, homesickness, anxiety, and burnout are part of seafarer life.  
-- Recognizing emotions is the first step in managing them.  
-- Use coping strategies consistently.  
-- Leadership and peer support can make a significant difference.  
+//   const selectedChapter = Content.chapters[chapterIndex] || Content.chapters[0];
+//   const selectedMaterial = selectedChapter?.materials?.[0]?.material ?? "";
 
-Reflection Questions:  
-- When during the day do you feel most lonely?  
-- What helps you feel more connected?
-          `,
-        },
-      ],
-      quiz: [
-        {
-          question: "What is the first step in managing loneliness?",
-          options: [
-            "Ignoring emotions",
-            "Recognizing emotions",
-            "Working longer hours",
-            "Avoiding colleagues",
-          ],
-          answer: "Recognizing emotions",
-        },
-      ],
-    },
-  ],
-};
+//   // Map chapter index to image
+//   const chapterImages = [image1, image2, image3, image4, image5];
+//   const selectedImage = chapterImages[chapterIndex] || image1;
 
+//   // Reset scroll when chapter changes
+//   useEffect(() => {
+//     const el = containerRef.current;
+//     if (!el) return;
+//     el.scrollTop = 0;
+//     setScrollCompleted(false);
+//     const t = setTimeout(() => {
+//       if (el.scrollHeight <= el.clientHeight + 5) {
+//         setScrollCompleted(true);
+//       }
+//     }, 40);
+//     return () => clearTimeout(t);
+//   }, [chapterIndex, selectedMaterial, showCertificate]);
+
+//   const handleChangeChapter = (newIndex) => {
+//     if (unlockedChapters.includes(newIndex)) {
+//       setChapterIndex(newIndex);
+//       setShowCertificate(false);
+//       setScrollCompleted(false);
+//       const el = containerRef.current;
+//       if (el) el.scrollTo({ top: 0, behavior: "smooth" });
+//     }
+//   };
+
+//   const handleScroll = (e) => {
+//     const el = e.currentTarget;
+//     if (el.scrollTop + el.clientHeight >= el.scrollHeight - 5) {
+//       setScrollCompleted(true);
+//     }
+//   };
+
+//   const unlockNextChapter = () => {
+//     setCompletedChapters((prev) =>
+//       prev.includes(chapterIndex) ? prev : [...prev, chapterIndex]
+//     );
+//     const nextIndex = chapterIndex + 1;
+//     if (nextIndex < Content.chapters.length) {
+//       setUnlockedChapters((prev) =>
+//         prev.includes(nextIndex) ? prev : [...prev, nextIndex]
+//       );
+//       setChapterIndex(nextIndex);
+//     } else {
+//       setShowCertificate(true);
+//     }
+//   };
+
+//   const completeLastChapter = () => {
+//     setCompletedChapters((prev) =>
+//       prev.includes(chapterIndex) ? prev : [...prev, chapterIndex]
+//     );
+//     setShowCertificate(true);
+//   };
+
+//   const progressPercent = Math.min(
+//     100,
+//     Math.round((new Set(completedChapters).size / Content.chapters.length) * 100)
+//   );
+
+//   return (
+//     <div className="flex h-screen bg-gray-100">
+//       {/* Sidebar Overlay (mobile) */}
+//       {isSidebarOpen && (
+//         <div
+//           className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+//           onClick={() => setIsSidebarOpen(false)}
+//         />
+//       )}
+
+//       {/* Sidebar */}
+//       <aside
+//         className={`p-4 bg-white border-r border-gray-300 flex flex-col fixed md:relative top-0 left-0 z-20 transition-all duration-300 ${
+//           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+//         } md:translate-x-0 ${isSidebarMinimized ? "w-20" : "w-80 md:w-96"} h-full`}
+//       >
+//         <div className="flex items-center justify-between mb-4">
+//           <div
+//             className={`flex items-center ${
+//               isSidebarMinimized ? "md:justify-center" : ""
+//             }`}
+//           >
+//             <img
+//               src={Logo}
+//               alt="Logo"
+//               className={`size-10 text-blue-400 ${
+//                 isSidebarMinimized ? "ml-1" : "mr-2"
+//               }`}
+//             />
+//             {!isSidebarMinimized && (
+//               <h2 className="text-xl font-bold">Strive High</h2>
+//             )}
+//           </div>
+//           <button onClick={() => setIsSidebarOpen(false)} className="md:hidden">
+//             <X className="h-6 w-6 text-gray-600" />
+//           </button>
+//         </div>
+
+//         {!isSidebarMinimized && (
+//           <div className="mb-6">
+//             <p className="text-sm text-gray-600 mb-1">
+//               Progress: {progressPercent}%
+//             </p>
+//             <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+//               <div
+//                 className="h-full bg-blue-500 transition-all duration-500 ease-out"
+//                 style={{ width: `${progressPercent}%` }}
+//               />
+//             </div>
+//           </div>
+//         )}
+
+//         <div className="flex-1 overflow-y-auto">
+//           {Content.chapters.map((chapter, index) => {
+//             const isUnlocked = unlockedChapters.includes(index);
+//             const isCompleted = completedChapters.includes(index);
+//             return (
+//               <div
+//                 key={chapter.id}
+//                 className={`mb-2 border rounded-lg transition
+//                   ${
+//                     isUnlocked
+//                       ? "hover:border-blue-400 hover:bg-blue-50"
+//                       : "opacity-50 pointer-events-none"
+//                   }
+//                   ${
+//                     chapterIndex === index
+//                       ? "border-blue-400 bg-blue-50"
+//                       : "border-gray-300"
+//                   }`}
+//                 onClick={() => isUnlocked && handleChangeChapter(index)}
+//               >
+//                 <div className="px-4 py-3 flex items-center justify-between">
+//                   {isUnlocked ? (
+//                     <Unlock
+//                       className={`text-blue-400 ${
+//                         isSidebarMinimized ? "" : "mr-2"
+//                       }`}
+//                     />
+//                   ) : (
+//                     <Lock
+//                       className={`text-gray-400 ${
+//                         isSidebarMinimized ? "" : "mr-2"
+//                       }`}
+//                     />
+//                   )}
+//                   {!isSidebarMinimized && <span>{chapter.title}</span>}
+//                   {isCompleted && (
+//                     <span className="ml-auto text-green-500 font-bold">✓</span>
+//                   )}
+//                 </div>
+//               </div>
+//             );
+//           })}
+//         </div>
+
+//         <button
+//           onClick={() => setIsSidebarMinimized((s) => !s)}
+//           className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 bg-white border rounded-full p-1.5 hover:bg-gray-100"
+//         >
+//           <ChevronLeft
+//             className={`h-4 w-4 transition-transform ${
+//               isSidebarMinimized ? "rotate-180" : "rotate-0"
+//             }`}
+//           />
+//         </button>
+//       </aside>
+
+//       {/* Main Content */}
+//       <main className="flex flex-col flex-1">
+//         {/* Header */}
+//         <header className="flex items-center justify-between p-4 border-b bg-white">
+//           <div className="flex items-start">
+//             <button
+//               onClick={() => setIsSidebarOpen(true)}
+//               className="p-2 mr-3 md:hidden"
+//             >
+//               <Menu className="h-6 w-6 text-gray-700" />
+//             </button>
+//             <div>
+//               <h1 className="text-xl font-bold text-gray-700">{Content.name}</h1>
+//               <h2 className="text-lg font-semibold">{selectedChapter.title}</h2>
+//             </div>
+//           </div>
+//         </header>
+
+//         {/* Scrollable Content */}
+//         <div
+//           id="scrollable-content"
+//           ref={containerRef}
+//           className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 scroll-smooth"
+//           onScroll={handleScroll}
+//         >
+//           <div className="bg-white p-6 rounded-lg shadow-md whitespace-pre-line break-words">
+//             {showCertificate ? (
+//               <div className="text-center py-20">
+//                 <h1 className="text-3xl font-bold text-green-600 mb-4">
+//                   🎉 Certificate of Completion 🎉
+//                 </h1>
+//                 <p className="text-lg">
+//                   Congratulations! You have completed the{" "}
+//                   <strong>{Content.name}</strong>.
+//                 </p>
+//               </div>
+//             ) : (
+//               <>
+//                 {/* Chapter title */}
+//                 <h2 className="text-2xl font-bold text-gray-800 mb-4">
+//                   {selectedChapter.title}
+//                 </h2>
+
+//                 {/* Chapter image */}
+//                 <img
+//                   src={selectedImage}
+//                   alt={`Chapter ${chapterIndex + 1}`}
+//                   className="w-full h-64 object-cover rounded-lg mb-6"
+//                 />
+
+//                 {/* Chapter content */}
+//                 <p className="text-gray-800 leading-relaxed mb-6">
+//                   {selectedMaterial}
+//                 </p>
+
+//                 {/* Video below the content */}
+//                 <video
+//                   src={vedio1}
+//                   controls
+//                   className="w-full rounded-lg mb-6"
+//                 />
+//               </>
+//             )}
+//           </div>
+//         </div>
+
+//         {/* Bottom buttons */}
+//         {!showCertificate && (
+//           <div className="w-full flex justify-center space-x-4 p-4 bg-gray-100 border-t">
+//             {scrollCompleted ? (
+//               chapterIndex < Content.chapters.length - 1 ? (
+//                 <button
+//                   className="bg-blue-400 text-white px-6 py-2 rounded hover:bg-blue-500 transition"
+//                   onClick={unlockNextChapter}
+//                 >
+//                   Unlock Next Chapter
+//                 </button>
+//               ) : (
+//                 <button
+//                   className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition"
+//                   onClick={completeLastChapter}
+//                 >
+//                   Complete Chapter & Get Certificate
+//                 </button>
+//               )
+//             ) : (
+//               <div className="text-sm text-gray-600">
+//                 Scroll to the bottom to unlock.
+//               </div>
+//             )}
+//           </div>
+//         )}
+//       </main>
+//     </div>
+//   );
+// }
 import React, { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronLeft, Unlock, Lock } from "lucide-react";
 import Logo from "/src/assets/Logo/Ai logo-22.png";
-import lonelinessImage from "/src/assets/image/course_image.jpeg";
-import vedio1 from "/src/assets/BlogVideo/vedio1.mp4"; // 👈 your video
-// import Content from "/src/Pages/CourseContent.jsx";
+
+// Import all chapter images
+import image1 from "/src/assets/CourseImages/Image1.jpeg";
+import image2 from "/src/assets/CourseImages/Image2.jpeg";
+import image3 from "/src/assets/CourseImages/Image3.jpeg";
+import image4 from "/src/assets/CourseImages/Image4.jpeg";
+import image5 from "/src/assets/CourseImages/Image5.jpeg";
+
+// Import all chapter videos
+import vedio1 from "/src/assets/BlogVideo/vedio1.mp4";
+import vedio2 from "/src/assets/BlogVideo/vedio2.mp4";
+import vedio3 from "/src/assets/BlogVideo/vedio3.mp4";
+import vedio4 from "/src/assets/BlogVideo/video4.mp4";
+import vedio5 from "/src/assets/BlogVideo/video5.mp4";
+
+import Content from "/src/Pages/CourseContent.jsx";
 
 export default function CourseContent() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -428,7 +558,15 @@ export default function CourseContent() {
   const selectedChapter = Content.chapters[chapterIndex] || Content.chapters[0];
   const selectedMaterial = selectedChapter?.materials?.[0]?.material ?? "";
 
-  // Reset scroll + check if content fits
+  // Map chapter index to images
+  const chapterImages = [image1, image2, image3, image4, image5];
+  const selectedImage = chapterImages[chapterIndex] || image1;
+
+  // Map chapter index to videos
+  const chapterVideos = [vedio1, vedio2, vedio3, vedio4, vedio5];
+  const selectedVideo = chapterVideos[chapterIndex] || vedio1;
+
+  // Reset scroll when chapter changes
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
@@ -498,19 +636,22 @@ export default function CourseContent() {
 
       {/* Sidebar */}
       <aside
-        className={`p-4 bg-white border-r border-gray-300 flex flex-col fixed md:relative top-15 md:top-0 left-0 z-20 transition-all duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 ${isSidebarMinimized ? "w-20" : "w-80 md:w-60"} h-full`}
+        className={`p-4 bg-white border-r border-gray-300 flex flex-col fixed md:relative top-0 left-0 z-20 transition-all duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 ${isSidebarMinimized ? "w-20" : "w-80 md:w-96"} h-full`}
       >
         <div className="flex items-center justify-between mb-4">
           <div
-            className={`flex items-center ${isSidebarMinimized ? "md:justify-center" : ""
-              }`}
+            className={`flex items-center ${
+              isSidebarMinimized ? "md:justify-center" : ""
+            }`}
           >
             <img
               src={Logo}
               alt="Logo"
-              className={`size-10 text-blue-400 ${isSidebarMinimized ? "ml-1" : "mr-2"
-                }`}
+              className={`size-10 text-blue-400 ${
+                isSidebarMinimized ? "ml-1" : "mr-2"
+              }`}
             />
             {!isSidebarMinimized && (
               <h2 className="text-xl font-bold">Strive High</h2>
@@ -543,26 +684,30 @@ export default function CourseContent() {
               <div
                 key={chapter.id}
                 className={`mb-2 border rounded-lg transition
-                  ${isUnlocked
-                    ? "hover:border-blue-400 hover:bg-blue-50"
-                    : "opacity-50 pointer-events-none"
+                  ${
+                    isUnlocked
+                      ? "hover:border-blue-400 hover:bg-blue-50"
+                      : "opacity-50 pointer-events-none"
                   }
-                  ${chapterIndex === index
-                    ? "border-blue-400 bg-blue-50"
-                    : "border-gray-300"
+                  ${
+                    chapterIndex === index
+                      ? "border-blue-400 bg-blue-50"
+                      : "border-gray-300"
                   }`}
                 onClick={() => isUnlocked && handleChangeChapter(index)}
               >
                 <div className="px-4 py-3 flex items-center justify-between">
                   {isUnlocked ? (
                     <Unlock
-                      className={`text-blue-400 ${isSidebarMinimized ? "" : "mr-2"
-                        }`}
+                      className={`text-blue-400 ${
+                        isSidebarMinimized ? "" : "mr-2"
+                      }`}
                     />
                   ) : (
                     <Lock
-                      className={`text-gray-400 ${isSidebarMinimized ? "" : "mr-2"
-                        }`}
+                      className={`text-gray-400 ${
+                        isSidebarMinimized ? "" : "mr-2"
+                      }`}
                     />
                   )}
                   {!isSidebarMinimized && <span>{chapter.title}</span>}
@@ -577,11 +722,12 @@ export default function CourseContent() {
 
         <button
           onClick={() => setIsSidebarMinimized((s) => !s)}
-          className="hidden md:flex absolute -right-4 top-10  bg-white border rounded-full p-1.5 hover:bg-gray-100"
+          className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 bg-white border rounded-full p-1.5 hover:bg-gray-100"
         >
           <ChevronLeft
-            className={`h-4 w-4 transition-transform ${isSidebarMinimized ? "rotate-180" : "rotate-0"
-              }`}
+            className={`h-4 w-4 transition-transform ${
+              isSidebarMinimized ? "rotate-180" : "rotate-0"
+            }`}
           />
         </button>
       </aside>
@@ -589,18 +735,22 @@ export default function CourseContent() {
       {/* Main Content */}
       <main className="flex flex-col flex-1">
         {/* Header */}
-        <header className="flex items-center justify-start md:justify-center p-4 border-b bg-white">
-          <div className="flex items-center justify-center">
+        <header className="flex items-center justify-between p-4 border-b bg-white">
+          <div className="flex items-start">
             <button
               onClick={() => setIsSidebarOpen(true)}
               className="p-2 mr-3 md:hidden"
             >
               <Menu className="h-6 w-6 text-gray-700" />
             </button>
-            <h1 className="text-xl text-center font-bold text-gray-700">{Content.name}</h1>
+            <div>
+              <h1 className="text-xl font-bold text-gray-700">{Content.name}</h1>
+              {/* <h2 className="text-lg font-semibold">{selectedChapter.title}</h2> */}
+            </div>
           </div>
         </header>
 
+        {/* Scrollable Content */}
         <div
           id="scrollable-content"
           ref={containerRef}
@@ -608,36 +758,52 @@ export default function CourseContent() {
           onScroll={handleScroll}
         >
           <div className="bg-white p-6 rounded-lg shadow-md whitespace-pre-line break-words">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              {selectedChapter.title}
-            </h2>
-
-            <img
-              src={lonelinessImage}
-              alt="Loneliness"
-              className="w-full h-64 object-cover rounded-lg mb-6"
-            />
-
             {showCertificate ? (
               <div className="text-center py-20">
                 <h1 className="text-3xl font-bold text-green-600 mb-4">
                   🎉 Certificate of Completion 🎉
                 </h1>
                 <p className="text-lg">
-                  Congratulations! You have completed the <strong>{Content.name}</strong>.
+                  Congratulations! You have completed the{" "}
+                  <strong>{Content.name}</strong>.
                 </p>
               </div>
             ) : (
               <>
-                <p className="text-gray-800 leading-relaxed mb-6">{selectedMaterial}</p>
+                {/* Chapter title */}
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">
+                  {selectedChapter.title}
+                </h2>
 
-                {/* Video below the content */}
-                <video src={vedio1} controls className="w-full rounded-lg mb-6" />
+                {/* Chapter image */}
+                <img
+                  src={selectedImage}
+                  alt={`Chapter ${chapterIndex + 1}`}
+                  className="w-full h-64 object-cover rounded-lg mb-6"
+                />
+
+                {/* Text content before video */}
+                <p className="text-gray-800 leading-relaxed mb-6">
+                  {selectedMaterial.slice(0, selectedMaterial.length / 2)}
+                </p>
+
+                {/* Video in between */}
+                <video
+                  src={selectedVideo}
+                  controls
+                  className="w-full rounded-lg mb-6"
+                />
+
+                {/* Remaining content */}
+                <p className="text-gray-800 leading-relaxed">
+                  {selectedMaterial.slice(selectedMaterial.length / 2)}
+                </p>
               </>
             )}
           </div>
         </div>
 
+        {/* Bottom buttons */}
         {!showCertificate && (
           <div className="w-full flex justify-center space-x-4 p-4 bg-gray-100 border-t">
             {scrollCompleted ? (
@@ -657,7 +823,9 @@ export default function CourseContent() {
                 </button>
               )
             ) : (
-              <div className="text-sm text-gray-600">Scroll to the bottom to unlock.</div>
+              <div className="text-sm text-gray-600">
+                Scroll to the bottom to unlock.
+              </div>
             )}
           </div>
         )}

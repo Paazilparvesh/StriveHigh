@@ -8,7 +8,8 @@ const BlogPage = () => {
   return (
     <div className="p-4 md:p-8">
       <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
-        Blog Page - Videos
+        Understanding loneliness at sea
+
       </h1>
 
       {/* One video per line */}
@@ -18,7 +19,7 @@ const BlogPage = () => {
             key={video.id}
             className="border rounded-xl shadow-md overflow-hidden bg-white"
           >
-            <h2 className="text-lg font-semibold p-3">{video.title}</h2>
+            {/* <h2 className="text-lg font-semibold p-3">{video.title}</h2> */}
             <div className="w-full aspect-video bg-black">
               <video
                 className="w-full h-full object-cover"
