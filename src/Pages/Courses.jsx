@@ -225,8 +225,6 @@
 //   );
 // }
 
-
-
 // import React, { useEffect, useRef, useState } from "react";
 // import { Menu, X, ChevronLeft, Unlock, Lock } from "lucide-react";
 // import Logo from "/src/assets/Logo/Ai logo-22.png";
@@ -237,7 +235,6 @@
 // import image3 from "/src/assets/CourseImages/Image3.jpeg";
 // import image4 from "/src/assets/CourseImages/Image4.jpeg";
 // import image5 from "/src/assets/CourseImages/Image5.jpeg";
-
 
 // // Import video (you can extend to vedio2, vedio3 later if needed)
 // import vedio1 from "/src/assets/BlogVideo/vedio1.mp4";
@@ -621,7 +618,9 @@ export default function CourseContent() {
 
   const progressPercent = Math.min(
     100,
-    Math.round((new Set(completedChapters).size / Content.chapters.length) * 100)
+    Math.round(
+      (new Set(completedChapters).size / Content.chapters.length) * 100
+    )
   );
 
   return (
@@ -636,9 +635,11 @@ export default function CourseContent() {
 
       {/* Sidebar */}
       <aside
-        className={`p-4 bg-white border-r border-gray-300 flex flex-col fixed md:relative top-0 left-0 z-20 transition-all duration-300 ${
+        className={`p-4 bg-white border-r border-gray-300 flex flex-col fixed md:relative top-0 left-0 pt-20 md:pt-4 z-20 transition-all duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 ${isSidebarMinimized ? "w-20" : "w-80 md:w-96"} h-full`}
+        } md:translate-x-0 ${
+          isSidebarMinimized ? "w-20" : "w-80 md:w-72"
+        } h-full`}
       >
         <div className="flex items-center justify-between mb-4">
           <div
@@ -736,17 +737,14 @@ export default function CourseContent() {
       <main className="flex flex-col flex-1">
         {/* Header */}
         <header className="flex items-center justify-between p-4 border-b bg-white">
-          <div className="flex items-start">
+          <div className="flex items-center md:items-start">
             <button
               onClick={() => setIsSidebarOpen(true)}
               className="p-2 mr-3 md:hidden"
             >
               <Menu className="h-6 w-6 text-gray-700" />
             </button>
-            <div>
-              <h1 className="text-xl font-bold text-gray-700">{Content.name}</h1>
-              {/* <h2 className="text-lg font-semibold">{selectedChapter.title}</h2> */}
-            </div>
+            <h1 className="text-xl font-bold text-gray-700">{Content.name}</h1>
           </div>
         </header>
 

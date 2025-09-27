@@ -18,15 +18,15 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        {/* Course Page */}
+ 
         <Route path='/' element={<CourseContent />} />
-        {/* Blog Pages */}
+      
         <Route path="/blog/1" element={<BlogPage1 />} />
         <Route path="/blog/2" element={<BlogPage2 />} />
         <Route path="/blog/3" element={<BlogPage3 />} />
-        {/* Admin Page */}
+        
         <Route path="/admin" element={<AdminPage />} />
-        {/* Privacy Page */}
+      
         <Route path='/info' element={<Termscondition />} />
         <Route path='/privacy' element={<Privacy />} />
 
