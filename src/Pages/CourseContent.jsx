@@ -1,3 +1,4 @@
+
 const Content = {
   name: "Loneliness Chatbot Journey",
   chapters: [
@@ -9,9 +10,9 @@ const Content = {
           id: 1,
           type: "text",
           material: `
-**Still Waters, Strong Heart: Understanding Loneliness at Sea**
+Still Waters, Strong Heart: Understanding Loneliness at Sea**
 
-*Poem: Still Waters, Strong Heart*  
+Poem: Still Waters, Strong Heart*  
 Loneliness is silent,  
 It hides behind the smile.  
 A quiet ache that lingers,  
@@ -24,32 +25,31 @@ Reminding us — we’re not alone out there.
 
 ---
 
-### Reflections from Seafarers  
+Reflections from Seafarers  
 Loneliness is a deeply human experience — not just being alone, but feeling *unseen, unheard, and disconnected*. At sea, surrounded by colleagues, the irony is that loneliness can still feel overwhelming.  
 
-- *“It’s not the ocean’s silence that weighs on me, but the silence inside.”*  
+“It’s not the ocean’s silence that weighs on me, but the silence inside.”*  
 - *“Even when I laugh with my crew, some nights feel empty.”*  
 
 ---
 
-### Trainer’s Message  
+Trainer’s Message  
 Loneliness doesn’t always come from lack of company. Sometimes it comes from **missing emotional connection**. At sea, long shifts, cultural gaps, and being away from loved ones make it harder to feel understood. Recognizing this is the first step.  
 
 ---
 
-### CEO’s Message  
+ CEO’s Message  
 Our company acknowledges that seafarers are the lifeblood of the industry. Beyond safety and skills, your *mental and emotional wellbeing* matters. Speaking up about loneliness is not weakness — it’s courage. We encourage you to reach out, connect, and use the support systems available.  
 
 ---
 
-### Participant Reflections  
+Participant Reflections  
 - *“The training helped me see loneliness as something I can talk about, not just endure.”*  
 - *“I realized others feel the same — that gave me comfort.”*  
 - *“I learned small connections each day can make a big difference.”*  
 
 ---
-
-### Coping Checklist  
+ Coping Checklist  
 ✅ Acknowledge your feelings without shame.  
 ✅ Share daily experiences with a colleague or friend.  
 ✅ Stay connected with loved ones through calls or messages.  
@@ -58,7 +58,7 @@ Our company acknowledges that seafarers are the lifeblood of the industry. Beyon
 
 ---
 
-### ISWAN Study Insight  
+ ISWAN Study Insight  
 A study by ISWAN (International Seafarers’ Welfare and Assistance Network) revealed:  
 - **50% of seafarers** reported feeling lonely on board.  
 - Loneliness increases fatigue and reduces focus.  
@@ -66,13 +66,13 @@ A study by ISWAN (International Seafarers’ Welfare and Assistance Network) rev
 
 ---
 
-### Real Case Reflections  
+ Real Case Reflections  
 - **Case 1:** A young cadet isolated himself after being teased. With mentorship, he regained confidence.  
 - **Case 2:** A senior officer struggled to share his worries. After opening up, he found crew members respected him more.  
 
 ---
 
-### Moving Forward  
+ Moving Forward  
 Loneliness may visit, but it does not define you. Connection, even in small ways, can restore balance. Together, we can build a culture where every seafarer feels seen, valued, and supported.  
 
 *Remember: You are not alone in feeling alone.*
@@ -98,18 +98,18 @@ It’s the unseen tears we keep inside.
 
 ---
 
-### Trainer’s Note  
+ Trainer’s Note  
 There is a difference between **solitude** and **loneliness**. Solitude can refresh you. Loneliness drains you. The shadows of silence creep in when connection is missing.  
 
 ---
 
-### Seafarer Voices  
+ Seafarer Voices  
 - *“I pretended I was fine, but the silence wore me down.”*  
 - *“I worked extra hours to avoid thinking about it.”*  
 
 ---
 
-### Coping Checklist  
+ Coping Checklist  
 ✅ Notice mood swings and fatigue.  
 ✅ If a crewmate is unusually quiet, check in.  
 ✅ Share small conversations — even jokes help.  
@@ -117,7 +117,7 @@ There is a difference between **solitude** and **loneliness**. Solitude can refr
 
 ---
 
-### Real Case  
+ Real Case  
 A cadet worked nonstop to hide his loneliness. His performance dropped due to exhaustion. Only when a mentor noticed and spoke kindly did he open up and recover.  
 
 *Lesson: Silence isn’t always strength; sometimes it’s a call for help.*
@@ -133,7 +133,7 @@ A cadet worked nonstop to hide his loneliness. His performance dropped due to ex
           id: 3,
           type: "text",
           material: `
-**Bridges Across the Sea: Building Connection Onboard**
+Bridges Across the Sea: Building Connection Onboard**
 
 *Poem: The Small Bridge*  
 A smile, a word, a helping hand,  
@@ -143,17 +143,17 @@ Connection makes the darkness light.
 
 ---
 
-### CEO’s Message  
+ CEO’s Message  
 Safety on board isn’t only technical — it’s emotional. A crew that feels connected is safer, more alert, and more motivated. Building bridges of understanding is part of leadership.  
 
 ---
 
-### Trainer’s Advice  
+ Trainer’s Advice  
 Small acts build trust: sharing meals, learning a few words of another’s language, celebrating small wins. These bridges reduce conflicts and foster belonging.  
 
 ---
 
-### Checklist: Ways to Bond  
+ Checklist: Ways to Bond  
 Share stories about home.  
  Celebrate birthdays or festivals onboard.  
 Encourage crew games or group activities.  
@@ -161,7 +161,7 @@ Encourage crew games or group activities.
 
 ---
 
-### Real Case  
+ Real Case  
 One ship had frequent arguments due to cultural misunderstandings. The captain introduced weekly cultural sharing nights. Crew members brought songs, food, and traditions. Conflicts reduced drastically.  
 
 *Lesson: Connection is built, not assumed.*
@@ -177,7 +177,7 @@ One ship had frequent arguments due to cultural misunderstandings. The captain i
           id: 4,
           type: "text",
           material: `
-**Strength in Sharing: Courage to Speak Up**
+Strength in Sharing: Courage to Speak Up**
 
 *Poem: The Strongest Voice*  
 The hardest word is often "help",  
@@ -187,18 +187,17 @@ That lifts us out of silent pain.
 
 ---
 
-### Trainer’s Note  
+ Trainer’s Note  
 Sharing feelings is not weakness. It is **resilience**. When one crew member speaks, others realize they are not alone.  
 
 ---
 
-### Seafarer Reflections  
+ Seafarer Reflections  
 - *“I thought officers would judge me. Instead, they listened.”*  
 - *“Talking about my stress helped me sleep again.”*  
 
 ---
-
-### Coping Checklist  
+Coping Checklist  
  Write down feelings in a journal.  
  Speak to one trusted person.  
  Use helplines provided by welfare networks.  
@@ -206,12 +205,12 @@ Sharing feelings is not weakness. It is **resilience**. When one crew member spe
 
 ---
 
-### Research Insight  
+ Research Insight  
 ISWAN studies confirm that **peer dialogue** lowers mental health risks. Crew members who share openly have fewer stress-related errors.  
 
 ---
 
-### Real Case  
+ Real Case  
 A junior engineer feared opening up about stress. After encouragement, he shared with his supervisor. Not only was he supported, but several crew members admitted they felt the same.  
 
 *Lesson: One voice can start a wave of healing.*
@@ -227,7 +226,7 @@ A junior engineer feared opening up about stress. After encouragement, he shared
           id: 5,
           type: "text",
           material: `
-**A Culture of Care: Collective Responsibility**
+A Culture of Care: Collective Responsibility**
 
 *Poem: No Sailor Stands Alone*  
 One heart may sink, but many can rise,  
@@ -237,32 +236,31 @@ A culture of care means we are there.
 
 ---
 
-### CEO’s Message  
+CEO’s Message  
 Our vision for the future: ships where safety includes **mental wellbeing**. A true culture of care requires officers, crew, and the company to act together.  
 
 ---
 
-### Trainer’s Advice  
+Trainer’s Advice  
 Support is strongest when it is **collective**. If one person suffers silently, the whole team is affected. Leaders and crew alike must take responsibility for emotional health.  
 
 ---
 
-### Checklist: Building Culture of Care  
+ Checklist: Building Culture of Care  
  Leaders should model openness.  
  Encourage check-ins at meetings.  
  Include wellbeing in safety drills.  
  Create peer-support systems.  
 
 ---
-
-### Real Case  
+ Real Case  
 A captain once led with strict discipline only. Morale was low. After feedback, he shifted to approachable leadership — checking in on crew personally. Within weeks, teamwork improved, and safety incidents decreased.  
 
 *Lesson: Leadership with care strengthens the whole ship.*  
 
 ---
 
-### Closing Reflection  
+ Closing Reflection  
 Loneliness may arrive, but with shared responsibility, **connection becomes the anchor**. A culture of care ensures that every seafarer feels safe, valued, and supported.  
 
 *The journey of loneliness ends when we walk together.*

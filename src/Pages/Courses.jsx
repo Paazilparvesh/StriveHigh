@@ -521,18 +521,23 @@
 //     </div>
 //   );
 // }
+// src/Pages/CourseContent.jsx
+
+// src/Pages/CourseContent.jsx
+// src/Pages/CourseContent.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { Menu, X, ChevronLeft, Unlock, Lock } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Logo from "/src/assets/Logo/Ai logo-22.png";
 
-// Import all chapter images
+// Chapter images
 import image1 from "/src/assets/CourseImages/Image1.jpeg";
 import image2 from "/src/assets/CourseImages/Image2.jpeg";
 import image3 from "/src/assets/CourseImages/Image3.jpeg";
 import image4 from "/src/assets/CourseImages/Image4.jpeg";
 import image5 from "/src/assets/CourseImages/Image5.jpeg";
 
-// Import all chapter videos
+// Chapter videos
 import vedio1 from "/src/assets/BlogVideo/vedio1.mp4";
 import vedio2 from "/src/assets/BlogVideo/vedio2.mp4";
 import vedio3 from "/src/assets/BlogVideo/vedio3.mp4";
@@ -547,80 +552,63 @@ export default function CourseContent() {
   const [chapterIndex, setChapterIndex] = useState(0);
   const [completedChapters, setCompletedChapters] = useState([]);
   const [unlockedChapters, setUnlockedChapters] = useState([0]);
-  const [scrollCompleted, setScrollCompleted] = useState(false);
   const [showCertificate, setShowCertificate] = useState(false);
 
+  // Video flow state
+  const [videoFinished, setVideoFinished] = useState(false);
+
   const containerRef = useRef(null);
+  const videoRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const selectedChapter = Content.chapters[chapterIndex] || Content.chapters[0];
+  const selectedChapter = Content.chapters[chapterIndex];
   const selectedMaterial = selectedChapter?.materials?.[0]?.material ?? "";
-
-  // Map chapter index to images
   const chapterImages = [image1, image2, image3, image4, image5];
   const selectedImage = chapterImages[chapterIndex] || image1;
-
-  // Map chapter index to videos
   const chapterVideos = [vedio1, vedio2, vedio3, vedio4, vedio5];
   const selectedVideo = chapterVideos[chapterIndex] || vedio1;
 
-  // Reset scroll when chapter changes
+  // Handle quiz completion passed via navigate state
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    el.scrollTop = 0;
-    setScrollCompleted(false);
-    const t = setTimeout(() => {
-      if (el.scrollHeight <= el.clientHeight + 5) {
-        setScrollCompleted(true);
-      }
-    }, 40);
-    return () => clearTimeout(t);
-  }, [chapterIndex, selectedMaterial, showCertificate]);
+    if (location.state?.quizPassed && location.state.chapterIndex === chapterIndex) {
+      unlockNextChapter();
+      navigate(location.pathname, { replace: true, state: {} }); // Clear state
+    }
+  }, [location.state]);
+
+  // Reset video state when chapter changes
+  useEffect(() => {
+    containerRef.current?.scrollTo(0, 0);
+    setVideoFinished(false);
+  }, [chapterIndex]);
 
   const handleChangeChapter = (newIndex) => {
     if (unlockedChapters.includes(newIndex)) {
       setChapterIndex(newIndex);
       setShowCertificate(false);
-      setScrollCompleted(false);
-      const el = containerRef.current;
-      if (el) el.scrollTo({ top: 0, behavior: "smooth" });
+      setVideoFinished(false);
     }
   };
 
-  const handleScroll = (e) => {
-    const el = e.currentTarget;
-    if (el.scrollTop + el.clientHeight >= el.scrollHeight - 5) {
-      setScrollCompleted(true);
-    }
+  const handleVideoEnded = () => {
+    setVideoFinished(true);
   };
 
+  // Unlock next chapter
   const unlockNextChapter = () => {
-    setCompletedChapters((prev) =>
-      prev.includes(chapterIndex) ? prev : [...prev, chapterIndex]
-    );
+    setCompletedChapters((prev) => [...new Set([...prev, chapterIndex])]);
     const nextIndex = chapterIndex + 1;
     if (nextIndex < Content.chapters.length) {
-      setUnlockedChapters((prev) =>
-        prev.includes(nextIndex) ? prev : [...prev, nextIndex]
-      );
+      setUnlockedChapters((prev) => [...new Set([...prev, nextIndex])]);
       setChapterIndex(nextIndex);
     } else {
       setShowCertificate(true);
     }
   };
 
-  const completeLastChapter = () => {
-    setCompletedChapters((prev) =>
-      prev.includes(chapterIndex) ? prev : [...prev, chapterIndex]
-    );
-    setShowCertificate(true);
-  };
-
-  const progressPercent = Math.min(
-    100,
-    Math.round(
-      (new Set(completedChapters).size / Content.chapters.length) * 100
-    )
+  const progressPercent = Math.round(
+    (new Set(completedChapters).size / Content.chapters.length) * 100
   );
 
   return (
@@ -721,6 +709,7 @@ export default function CourseContent() {
           })}
         </div>
 
+        {/* Toggle Minimize Button */}
         <button
           onClick={() => setIsSidebarMinimized((s) => !s)}
           className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 bg-white border rounded-full p-1.5 hover:bg-gray-100"
@@ -735,7 +724,6 @@ export default function CourseContent() {
 
       {/* Main Content */}
       <main className="flex flex-col flex-1">
-        {/* Header */}
         <header className="flex items-center justify-between p-4 border-b bg-white">
           <div className="flex items-center md:items-start">
             <button
@@ -746,14 +734,12 @@ export default function CourseContent() {
             </button>
             <h1 className="text-xl font-bold text-gray-700">{Content.name}</h1>
           </div>
+          <div className="hidden md:block">{progressPercent}% completed</div>
         </header>
 
-        {/* Scrollable Content */}
         <div
-          id="scrollable-content"
           ref={containerRef}
-          className="flex-1 overflow-y-auto overflow-x-hidden p-4 md:p-6 scroll-smooth"
-          onScroll={handleScroll}
+          className="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth"
         >
           <div className="bg-white p-6 rounded-lg shadow-md whitespace-pre-line break-words">
             {showCertificate ? (
@@ -768,31 +754,43 @@ export default function CourseContent() {
               </div>
             ) : (
               <>
-                {/* Chapter title */}
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">
                   {selectedChapter.title}
                 </h2>
-
-                {/* Chapter image */}
                 <img
                   src={selectedImage}
                   alt={`Chapter ${chapterIndex + 1}`}
                   className="w-full h-64 object-cover rounded-lg mb-6"
                 />
-
-                {/* Text content before video */}
                 <p className="text-gray-800 leading-relaxed mb-6">
                   {selectedMaterial.slice(0, selectedMaterial.length / 2)}
                 </p>
 
-                {/* Video in between */}
+                {/* Video */}
                 <video
+                  ref={videoRef}
+                  onEnded={handleVideoEnded}
                   src={selectedVideo}
                   controls
-                  className="w-full rounded-lg mb-6"
+                  className={`w-full rounded-lg mb-6 ${
+                    videoFinished ? "opacity-50 pointer-events-none" : ""
+                  }`}
                 />
 
-                {/* Remaining content */}
+                {/* Start Quiz Button */}
+                {videoFinished && (
+                  <div className="text-center mb-6">
+                    <button
+                      onClick={() =>
+                        navigate("/quiz", { state: { chapterIndex } })
+                      }
+                      className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition"
+                    >
+                      Start Quiz
+                    </button>
+                  </div>
+                )}
+
                 <p className="text-gray-800 leading-relaxed">
                   {selectedMaterial.slice(selectedMaterial.length / 2)}
                 </p>
@@ -800,34 +798,13 @@ export default function CourseContent() {
             )}
           </div>
         </div>
-
-        {/* Bottom buttons */}
-        {!showCertificate && (
-          <div className="w-full flex justify-center space-x-4 p-4 bg-gray-100 border-t">
-            {scrollCompleted ? (
-              chapterIndex < Content.chapters.length - 1 ? (
-                <button
-                  className="bg-blue-400 text-white px-6 py-2 rounded hover:bg-blue-500 transition"
-                  onClick={unlockNextChapter}
-                >
-                  Unlock Next Chapter
-                </button>
-              ) : (
-                <button
-                  className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition"
-                  onClick={completeLastChapter}
-                >
-                  Complete Chapter & Get Certificate
-                </button>
-              )
-            ) : (
-              <div className="text-sm text-gray-600">
-                Scroll to the bottom to unlock.
-              </div>
-            )}
-          </div>
-        )}
       </main>
     </div>
   );
 }
+
+
+
+
+
+
