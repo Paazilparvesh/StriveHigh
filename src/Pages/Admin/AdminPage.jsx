@@ -5,15 +5,12 @@ import Sidebar from "/src/Components/ReusableComponents/Sidebar.jsx";
 import UserDetails from "/src/Components/AdminComponents/UserComponent/UserDetails.jsx";
 import QuizDetails from "/src/Components/AdminComponents/QuizComponent/QuizDetails.jsx";
 import AIContent from "/src/Components/AdminComponents/AiComponent/AiContent.jsx";
-import Dashboard from "/src/Components/AdminComponents/Dashboard/Dashboard.jsx"
 
 const AdminPage = () => {
     const [activeTab, setActiveTab] = useState("Users");
 
     const renderContent = () => {
         switch (activeTab) {
-            case "Dashboard":
-                return <Dashboard />;
             case "Users":
                 return <UserDetails />;
             case "Quiz Details":
