@@ -15,6 +15,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
+    { label: "Dashboard", icon: <Smartphone size={20} /> },
     { label: "Users", icon: <User size={20} /> },
     { label: "Quiz Details", icon: <Zap size={20} /> },
     { label: "AI Content", icon: <Smartphone size={20} /> },
