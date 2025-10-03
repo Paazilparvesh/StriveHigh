@@ -3,6 +3,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Confetti from "react-confetti";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ✅ Importing icons from lucide-react
+import {
+  Frown,
+  PartyPopper,
+  Handshake,
+  Meh,
+  Dumbbell,
+  Gamepad2,
+  Bed,
+  Eye,
+  Users,
+  Soup,
+  Music,
+  Angry,
+} from "lucide-react";
+
 export default function Quiz() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,18 +30,9 @@ export default function Quiz() {
       id: 1,
       question: "What emotional state did Mark experience from isolation?",
       options: [
-        {
-          text: "Lonely and disconnected from others",
-          img: "https://img.icons8.com/emoji/96/1f622.png",
-        },
-        {
-          text: "Proud of finishing his tasks early",
-          img: "https://img.icons8.com/emoji/96/1f973.png",
-        },
-        {
-          text: "Excited to join the next crew activity",
-          img: "https://img.icons8.com/emoji/96/1f91d.png",
-        },
+        { text: "Lonely and disconnected from others", Icon: Frown },
+        { text: "Proud of finishing his tasks early", Icon: PartyPopper },
+        { text: "Excited to join the next crew activity", Icon: Handshake },
       ],
       answer: "Lonely and disconnected from others",
     },
@@ -33,18 +40,9 @@ export default function Quiz() {
       id: 2,
       question: "What helps reduce loneliness onboard a ship?",
       options: [
-        {
-          text: "Isolation",
-          img: "https://img.icons8.com/emoji/96/1f610.png",
-        },
-        {
-          text: "Connection with others",
-          img: "https://img.icons8.com/emoji/96/1f91d.png",
-        },
-        {
-          text: "Overwork",
-          img: "https://img.icons8.com/emoji/96/1f4aa.png",
-        },
+        { text: "Isolation", Icon: Meh },
+        { text: "Connection with others", Icon: Handshake },
+        { text: "Overwork", Icon: Dumbbell },
       ],
       answer: "Connection with others",
     },
@@ -52,18 +50,9 @@ export default function Quiz() {
       id: 3,
       question: "Which activity is BEST for boosting morale onboard?",
       options: [
-        {
-          text: "Team games and bonding activities",
-          img: "https://img.icons8.com/emoji/96/1f3ae.png",
-        },
-        {
-          text: "Sleeping all day",
-          img: "https://img.icons8.com/emoji/96/1f634.png",
-        },
-        {
-          text: "Ignoring others",
-          img: "https://img.icons8.com/emoji/96/1f644.png",
-        },
+        { text: "Team games and bonding activities", Icon: Gamepad2 },
+        { text: "Sleeping all day", Icon: Bed },
+        { text: "Ignoring others", Icon: Eye },
       ],
       answer: "Team games and bonding activities",
     },
@@ -71,18 +60,9 @@ export default function Quiz() {
       id: 4,
       question: "When you feel stressed onboard, what should you do?",
       options: [
-        {
-          text: "Talk to a trusted friend or officer",
-          img: "https://img.icons8.com/emoji/96/1f46b.png",
-        },
-        {
-          text: "Keep it all inside",
-          img: "https://img.icons8.com/emoji/96/1f62a.png",
-        },
-        {
-          text: "Work extra hours to forget",
-          img: "https://img.icons8.com/emoji/96/1f4aa.png",
-        },
+        { text: "Talk to a trusted friend or officer", Icon: Users },
+        { text: "Keep it all inside", Icon: Frown },
+        { text: "Work extra hours to forget", Icon: Dumbbell },
       ],
       answer: "Talk to a trusted friend or officer",
     },
@@ -90,18 +70,9 @@ export default function Quiz() {
       id: 5,
       question: "What daily habit helps improve mental health at sea?",
       options: [
-        {
-          text: "Regular exercise",
-          img: "https://img.icons8.com/emoji/96/1f4aa.png",
-        },
-        {
-          text: "Skipping meals",
-          img: "https://img.icons8.com/emoji/96/1f372.png",
-        },
-        {
-          text: "Never sleeping",
-          img: "https://img.icons8.com/emoji/96/1f62a.png",
-        },
+        { text: "Regular exercise", Icon: Dumbbell },
+        { text: "Skipping meals", Icon: Soup },
+        { text: "Never sleeping", Icon: Bed },
       ],
       answer: "Regular exercise",
     },
@@ -109,18 +80,9 @@ export default function Quiz() {
       id: 6,
       question: "What’s a positive way to fight boredom onboard?",
       options: [
-        {
-          text: "Learning a new skill or hobby",
-          img: "https://img.icons8.com/emoji/96/1f3b6.png",
-        },
-        {
-          text: "Complaining all the time",
-          img: "https://img.icons8.com/emoji/96/1f620.png",
-        },
-        {
-          text: "Staying in bed all day",
-          img: "https://img.icons8.com/emoji/96/1f634.png",
-        },
+        { text: "Learning a new skill or hobby", Icon: Music },
+        { text: "Complaining all the time", Icon: Angry },
+        { text: "Staying in bed all day", Icon: Bed },
       ],
       answer: "Learning a new skill or hobby",
     },
@@ -222,6 +184,8 @@ export default function Quiz() {
                   optionStyle += " border-gray-200 shadow-md";
                 }
 
+                const IconComponent = option.Icon;
+
                 return (
                   <motion.div
                     key={i}
@@ -229,10 +193,8 @@ export default function Quiz() {
                     onClick={() => handleOptionClick(option.text)}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <img
-                      src={option.img}
-                      alt={option.text}
-                      className="w-16 h-16 sm:w-20 sm:h-20 object-contain mb-3"
+                    <IconComponent
+                      className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-600 mb-3"
                     />
                     <p className="font-medium text-gray-700 text-sm sm:text-base text-center">
                       {option.text}
